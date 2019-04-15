@@ -1,0 +1,53 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: laravel-service-three
+spec:
+  ports:
+    -
+      name: http
+      port: 80
+      protocol: TCP
+  selector:
+    app: laravel
+  type: LoadBalancer
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: laravel
+  name: laravel
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: laravel
+    spec:
+      initContainers:
+        -
+          name: init-sites-volume
+          image: 717590356715.dkr.ecr.us-east-1.amazonaws.com/satellitev1:latest
+          command: ['/bin/bash', '-c']
+          args: ['cp -r /var/www/html/sites/ /data/; chown www-data:www-data /data/ -R']
+          volumeMounts:
+          - mountPath: /data
+            name: vol-laravel
+      containers:
+        -
+          image: 717590356715.dkr.ecr.us-east-1.amazonaws.com/satellitev1:latest
+          name: custom
+          ports:
+            -
+              containerPort: 80
+          volumeMounts:
+          # - mountPath: /var/www/html/modules
+          #   name: vol-laravel
+          #   subPath: modules
+      volumes:
+        -
+          name: vol-laravel
+          persistentVolumeClaim:
+            claimName: laravel-pvc

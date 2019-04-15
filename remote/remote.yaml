@@ -1,0 +1,27 @@
+#Is this still being used?
+apiVersion: gitkube.sh/v1alpha1
+kind: Remote
+metadata:
+  creationTimestamp: null
+  name: kube1
+  namespace: default
+spec:
+  authorizedKeys:
+  - |
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDFOHgFcrxbzM8qfKd7+QM9QafF06kQUEdoca5r+BR3seB2hsVqe0dkEZNaAspXbqH76Q0dZ6fvBQrVWJfV5upFQ6yQFSDsUx8pzJI0qaC5vjWtvupxWEgwH/XJ/Dt0RLggcstaqFuYPLRyGE2sPh/mYz9IWnNBpxbt6kEjvYpFW+s2ncQmCMIlutxnRBoiLq7o6bgthk5yxc5gPE4SpRnh+sffmN7qrF/P319rIJqYNLCCW8wFH09g+Dm3avRNRSh5mFw/UF3aU+JRPqV5gYNqodUVeHXzxyPcxqq+kCJpWf7k58e4QFGNXUHrkFqOODI9oTf01TIcAnNFPMy/ddoqpXSkYMiG1TvXJCByP1cuq9T6eeF8cpjhOX3qhGOpzVBf+G+Dtp0cTHhpubHivxgCp6xSHwekJoULECPtre9e87OJDEqLxL1zgrjJyjXEDuPe1dwSNC96wO5YprA/K+dZbtdA7losMQYu5zumuIflwcrIguQcM6qha7hlFix8gTrb/e31ei4h8aM7IBon6KMH3ao/9S4TZF8f1V92qgodcF+oKcJqYjLOxtNkd6dh0jzXwRHJzDMSlZ622kkhX40h+eqMKdQUiQMWPxuLmvo0B4nXXmzKoI2EdjXL8bgsrS4RqPh8jQel3Ot3wGCGTiKZvqZ5PHo81+cZE1HVt5XnyQ== rdunn@UBM65902MAC
+  deployments:
+  - containers:
+    - dockerfile: remote/Dockerfile
+      name: laravel
+      path: remote
+    name: laravel
+  manifests:
+    helm: {}
+    path: remote
+  registry:
+    credentials:
+      secretKeyRef:
+        key: ""
+status:
+  remoteUrl: ""
+  remoteUrlDesc: ""
