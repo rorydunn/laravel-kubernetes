@@ -11,11 +11,7 @@
 #kubectl exec -it laravel-mysql-6fd9f5ddf7-v77k4  -- mysql -u root -proot_password laravel-database < ~/Documents/db_backups/february2019/stage-stonesmart-201902041425-before.sql
 #kubectl exec -it laravel-7c8b7fbf6f-d6jvn -- /bin/bash
 
-# Function:
-# Create environments for central and cancernetwork using supplied db backups
 #Parameters needed: git branch, Mysql db backup,
-#branch = 'lsgdevRD01'
-#db = 'arn:aws:iam::717590356715:role/awsk8mgmt'
 
 echo "##Defining persistent volume containers##"
 #kubectl apply -f laravel-persistentvolumeclaim.yaml

@@ -7,16 +7,6 @@
 # Usage: aws-init.sh <region> <clustername>
 
 # Function:
-# Create environments for central and cancernetwork using supplied db backups
-# $name = 'lsgdevRD01'
-# $role = 'arn:aws:iam::717590356715:role/awsk8mgmt'
-# $subnet1 = 'subnet-072bce0e16e625de1'
-# $subnet2 = 'subnet-00ce128a244ed83a3'
-# $subnet3 = 'subnet-0feb1a10f6b36ee62'
-# $securityGroup = 'sg-09bedc8b944e491e6'
-# $region = 'us-east-1'
-
-# Function:
 # Create EKS cluster in AWS
 
 # Collect parameters
